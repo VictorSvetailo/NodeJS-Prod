@@ -1,9 +1,9 @@
 const products = [{id: 1, title: 'tomato'}, {id: 2, title: 'orange'}]
 
-const productsRepository = {
+export const productsRepository = {
     findProducts(title: string | null | undefined) {
         if (title) {
-            const filteredProducts = products.filter(p => p.title.indexOf(title) > -1)
+            let filteredProducts = products.filter(p => p.title.indexOf(title) > -1)
             return filteredProducts
         } else {
             return products

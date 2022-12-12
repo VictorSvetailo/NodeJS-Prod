@@ -1,16 +1,16 @@
 import {Request, Response, Router} from 'express';
-
-const addresses = [{id: 1, value: 'russia'}, {id: 2, value: 'Essentuky'}]
+import {addressesRepository} from '../repositories/addresses-repository';
 
 export const addressesRouter = Router({})
 
 addressesRouter.get('/', (req: Request, res: Response) => {
-    res.send(addresses)
+    const fetchAddresses = addressesRepository.fetchAddresses()
+    res.send(fetchAddresses)
 })
 addressesRouter.get('/:id', (req: Request, res: Response) => {
-    let address = addresses.find(a => a.id == +req.params.id)
-    if (address) {
-        res.send(address)
+    const findAddresses = addressesRepository.findAddressesById(+req.params.id)
+    if (findAddresses) {
+        res.send(findAddresses)
     } else {
         res.send(404)
     }
