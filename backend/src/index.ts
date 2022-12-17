@@ -11,6 +11,7 @@ app.use(parserMiddleware)
 
 
 const port = process.env.PORT || 3000
+app.use('/', productsRouter)
 app.use('/products', productsRouter)
 app.use('/addresses', addressesRouter)
 
